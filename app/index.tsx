@@ -3,14 +3,14 @@ import { View, StyleSheet } from 'react-native';
 
 import ZodiacHeader from './ZodiacHeader';
 import ZodiacFooter from './ZodiacFooter';
-import MainMenu from './MainMenu';
+import MenuItems from './MainMenu';
 
 export default function App() {
   return (
     <>
       <View style={styles.container}>
         <ZodiacHeader />
-        <MainMenu />
+        <MenuItems />
       </View>
       <View style={styles.footerContainer}>
         <ZodiacFooter />
@@ -22,9 +22,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#333333',
   },
-  footerContainer: {
-    backgroundColor: '#171717',
-  },
+  footerContainer: { backgroundColor: '#333333' },
 });
