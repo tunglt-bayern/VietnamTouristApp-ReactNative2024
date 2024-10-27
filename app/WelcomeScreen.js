@@ -1,21 +1,38 @@
 import React, { useState } from 'react';
-import { ScrollView, Text, StyleSheet, TextInput } from 'react-native';
+import { ScrollView, Text, StyleSheet, TextInput, Platform, KeyboardAvoidingView } from 'react-native';
 
 export default function WelcomeScreen() {
   const [firstName, onChangeFirstName] = useState('');
+  const [mobile, onChangeMobileNumber] = useState('');
+  const [place, onChangePlace] = useState('');
+
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.headerText}>Welcome to Vietnam Local</Text>
-      <Text style={styles.regularText}>
-      Vietnam Local was born with the mission to help international friends travel more easily and enjoy more fun while visiting Vietnam!
-      </Text>
-      <TextInput
-        style={styles.inputBox}
-        value={firstName}
-        onChangeText={onChangeFirstName}
-        placeholder={'Your name:'}
-      />
-    </ScrollView>
+
+      <ScrollView style={styles.container} keyboardDismissMode="on-drag">
+        <Text style={styles.headerText}>Welcome to Vietnam Local</Text>
+        <Text style={styles.regularText}>
+          Vietnam Local was born with the mission to help international friends travel more easily and enjoy more fun while visiting Vietnam!
+        </Text>
+        <TextInput
+          style={styles.inputBox}
+          value={firstName}
+          onChangeText={onChangeFirstName}
+          placeholder="Your name:"
+        />
+        <TextInput
+          style={styles.input}
+          value={mobile}
+          onChangeText={onChangeMobileNumber}
+          placeholder="Phone Number"
+          keyboardType="phone-pad"
+        />
+        <TextInput
+          style={styles.messageInput}
+          value={place}
+          onChangeText={onChangePlace}
+          placeholder="Enter your place"
+        />
+      </ScrollView>
   );
 }
 
@@ -42,7 +59,25 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     fontSize: 16,
-    borderColor: 'EDEFEE',
-    backgroundColor: '#EDEFEE',
+    borderColor: '#EDEFEE',
+    backgroundColor: '#F4CE14',
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    fontSize: 16,
+    borderColor: '#EDEFEE',
+    backgroundColor: '#F4CE14',
+  },
+  messageInput: {
+    height: 100,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    fontSize: 16,
+    borderColor: '#EDEFEE',
+    backgroundColor: '#F4CE14',
   },
 });
