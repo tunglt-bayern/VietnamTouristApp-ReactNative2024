@@ -3,14 +3,14 @@ import { View, StyleSheet } from 'react-native';
 
 import ZodiacHeader from './ZodiacHeader';
 import ZodiacFooter from './ZodiacFooter';
-import MenuItems from './MainMenu';
+import WelcomeScreen from './WelcomeScreen';
 
 export default function App() {
   return (
     <>
       <View style={styles.container}>
         <ZodiacHeader />
-        <MenuItems />
+        <WelcomeScreen />
       </View>
       <View style={styles.footerContainer}>
         <ZodiacFooter />
