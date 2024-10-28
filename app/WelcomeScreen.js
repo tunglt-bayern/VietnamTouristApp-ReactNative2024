@@ -1,38 +1,46 @@
 import React, { useState } from 'react';
-import { ScrollView, Text, StyleSheet, TextInput, Platform, KeyboardAvoidingView } from 'react-native';
+import {
+  ScrollView,
+  Text,
+  StyleSheet,
+  TextInput,
+  Pressable,
+} from 'react-native';
 
-export default function WelcomeScreen() {
-  const [firstName, onChangeFirstName] = useState('');
-  const [mobile, onChangeMobileNumber] = useState('');
-  const [place, onChangePlace] = useState('');
+export default function LoginScreen() {
+  const [email, onChangeEmail] = useState('');
+  const [password, onChangePassword] = useState('');
+  const [loggedIn, onLogin] = useState(false);
 
   return (
+    <ScrollView style={styles.container}>
+      <Text style={styles.headerText}>Welcome to Vietnam Local</Text>
+      {loggedIn && <Text style={styles.headerText}>You are logged in!</Text>}
 
-      <ScrollView style={styles.container} keyboardDismissMode="on-drag">
-        <Text style={styles.headerText}>Welcome to Vietnam Local</Text>
-        <Text style={styles.regularText}>
-          Vietnam Local was born with the mission to help international friends travel more easily and enjoy more fun while visiting Vietnam!
-        </Text>
-        <TextInput
-          style={styles.inputBox}
-          value={firstName}
-          onChangeText={onChangeFirstName}
-          placeholder="Your name:"
-        />
-        <TextInput
-          style={styles.input}
-          value={mobile}
-          onChangeText={onChangeMobileNumber}
-          placeholder="Phone Number"
-          keyboardType="phone-pad"
-        />
-        <TextInput
-          style={styles.messageInput}
-          value={place}
-          onChangeText={onChangePlace}
-          placeholder="Enter your place"
-        />
-      </ScrollView>
+      {!loggedIn && (
+        <>
+          <Text style={styles.regularText}>Login to continue </Text>
+          <TextInput
+            style={styles.inputBox}
+            value={email}
+            onChangeText={onChangeEmail}
+            placeholder={'email'}
+            keyboardType={'email-address'}
+          />
+          <TextInput
+            style={styles.inputBox}
+            value={password}
+            onChangeText={onChangePassword}
+            placeholder={'password'}
+            keyboardType={'default'}
+            secureTextEntry={true}
+          />
+          <Pressable onPress={() => onLogin(!loggedIn)} style={styles.button}>
+            <Text style={styles.buttonText}>Log in</Text>
+          </Pressable>
+        </>
+      )}
+    </ScrollView>
   );
 }
 
@@ -59,25 +67,23 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     fontSize: 16,
-    borderColor: '#EDEFEE',
-    backgroundColor: '#F4CE14',
+    borderColor: 'EDEFEE',
+    backgroundColor: '#EDEFEE',
   },
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
+  button: {
+    fontSize: 22,
     padding: 10,
-    fontSize: 16,
-    borderColor: '#EDEFEE',
-    backgroundColor: '#F4CE14',
+    marginVertical: 8,
+    margin: 100,
+    backgroundColor: '#EE9972',
+    borderColor: '#EE9972',
+    borderWidth: 2,
+    borderRadius: 50,
   },
-  messageInput: {
-    height: 100,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    fontSize: 16,
-    borderColor: '#EDEFEE',
-    backgroundColor: '#F4CE14',
+  buttonText: {
+    color: 'black',
+    textAlign: 'center',
+    fontSize: 25,
   },
 });
+
