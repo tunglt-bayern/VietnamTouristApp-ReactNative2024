@@ -5,9 +5,11 @@ import {
   StyleSheet,
   Image,
   useColorScheme,
+  Pressable,
 } from 'react-native';
+import React from 'react';
 
-export default function WelcomeScreen() {
+export default function WelcomeScreen({ navigation }) {
   const colorScheme = useColorScheme();
 
   return (
@@ -26,7 +28,6 @@ export default function WelcomeScreen() {
           accessible={true}
           accessibilityLabel={'Vietnam Local Logo'}
         />
-
         <Text
           style={[
             styles.headerText,
@@ -44,6 +45,12 @@ export default function WelcomeScreen() {
         ]}>
         Vietnam Local was born with the mission to help international friends travel more easily and enjoy more fun while visiting Vietnam!
       </Text>
+      <Text style={styles.regularText}>Click to view menu</Text>
+      <Pressable
+        onPress={() => navigation.navigate('Menu')}
+        style={styles.button}>
+        <Text style={styles.buttonText}>View Menu</Text>
+      </Pressable>
     </ScrollView>
   );
 }
@@ -70,7 +77,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     padding: 20,
     marginVertical: 8,
-    color: '#EDEFEE',
+    color: 'black',
     textAlign: 'center',
   },
   image: {
@@ -78,4 +85,19 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 20,
   },
+  button: {
+    fontSize: 22,
+    padding: 10,
+    marginVertical: 8,
+    margin: 100,
+    backgroundColor: '#EE9972',
+    borderColor: '#EE9972',
+    borderWidth: 2,
+    borderRadius: 50,
+  },
+  buttonText: {
+    color: 'black',
+    textAlign: 'center',
+    fontSize: 25,
+  },  
 });
