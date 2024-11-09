@@ -8,23 +8,39 @@
   import { NavigationContainer } from '@react-navigation/native';
   import { createNativeStackNavigator } from '@react-navigation/native-stack';
   import React, { useState } from 'react';
+  import Ionicons from '@expo/vector-icons/Ionicons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-  const Stack = createNativeStackNavigator();
+  const Tab = createBottomTabNavigator();
 
   export default function App() {
     return (
-      <NavigationContainer independent={true}>
-        <View style={styles.container}>
-          <ZodiacHeader />
-          <View style={styles.content}>
-            <Stack.Navigator initialRouteName="Welcome">
-              <Stack.Screen name="Welcome" component={WelcomeScreen} />
-              <Stack.Screen name="Menu" component={MainMenu} />
-            </Stack.Navigator>
+      <>
+        <NavigationContainer independent={true}>
+          <View style={styles.container}>
+            <ZodiacHeader />
+            <Tab.Navigator
+              screenOptions={({ route }) => ({
+                tabBarIcon: ({size}) => {
+                  let iconName;
+                  if (route.name === 'Welcome') {
+                    iconName = 'md-home';
+                  } else if (route.name === 'Menu') {
+                    iconName = 'md-menu';
+                  }
+                  return <Ionicons name={iconName} size={size} />;
+                },
+              })}
+              initialRouteName="Menu">
+              <Tab.Screen name="Welcome" component={WelcomeScreen} />
+              <Tab.Screen name="Menu" component={MainMenu} />
+            </Tab.Navigator>
           </View>
-          <ZodiacFooter />
-        </View>
-      </NavigationContainer>
+          <View style={styles.footerContainer}>
+            <ZodiacFooter />
+          </View>
+        </NavigationContainer>
+      </>
     );
   }
 
@@ -33,11 +49,5 @@
       flex: 1,
       backgroundColor: '#333333',
     },
-    content: {
-      flex: 1,
-    },
-    footerContainer: {
-      backgroundColor: '#333333',
-      paddingVertical: 10,
-    },
-  });
+    footerContainer: { backgroundColor: '#333333' },
+  })
