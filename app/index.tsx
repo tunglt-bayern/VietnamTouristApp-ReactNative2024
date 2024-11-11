@@ -13,12 +13,12 @@ const Drawer = createDrawerNavigator();
 export default function App() {
   return (
     <>
-      <NavigationContainer independent={true}>
+      <NavigationContainer>
         <View style={styles.container}>
           <ZodiacHeader />
-          <Drawer.Navigator useLegacyImplementation initialRouteName="Menu">
+          <Drawer.Navigator useLegacyImplementation initialRouteName="Welcome">
             <Drawer.Screen name="Welcome" component={WelcomeScreen} />
-            <Drawer.Screen name="Menu" component={MainMenu} />
+            <Drawer.Screen name="MainMenu" component={MainMenu} />
           </Drawer.Navigator>
         </View>
         <View style={styles.footerContainer}>
