@@ -16,7 +16,7 @@ export default function App() {
       <NavigationContainer>
         <View style={styles.container}>
           <ZodiacHeader />
-          <Drawer.Navigator useLegacyImplementation initialRouteName="Welcome">
+          <Drawer.Navigator initialRouteName="Welcome">
             <Drawer.Screen name="Welcome" component={WelcomeScreen} />
             <Drawer.Screen name="MainMenu" component={MainMenu} />
           </Drawer.Navigator>
