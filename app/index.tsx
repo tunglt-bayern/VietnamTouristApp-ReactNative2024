@@ -18,7 +18,7 @@ export default function App() {
           <ZodiacHeader />
           <Drawer.Navigator initialRouteName="Welcome">
             <Drawer.Screen name="Welcome" component={WelcomeScreen} />
-            <Drawer.Screen name="MainMenu" component={MainMenu} />
+            <Drawer.Screen name="Travel" component={MainMenu} />
           </Drawer.Navigator>
         </View>
         <View style={styles.footerContainer}>

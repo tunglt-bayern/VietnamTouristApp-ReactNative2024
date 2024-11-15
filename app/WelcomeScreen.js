@@ -1,103 +1,55 @@
-import {
-  ScrollView,
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  useColorScheme,
-  Pressable,
-} from 'react-native';
-import React from 'react';
+import * as React from "react";
+import { Text, View, StyleSheet, Image } from "react-native";
+import Button from "./Button";
 
-export default function WelcomeScreen({ navigation }) {
-  const colorScheme = useColorScheme();
-
+const WelcomeScreen = ({ navigation }) => {
   return (
-    <ScrollView
-      style={[
-        styles.container,
-        colorScheme === 'light'
-          ? { backgroundColor: '#fff' }
-          : { backgroundColor: '#333333' },
-      ]}>
-      <View style={styles.headerWrapper}>
+    <View style={styles.container}>
+      <View style={styles.contentContainer}>
         <Image
-          style={styles.image}
-          source={require('../img/logo.png')}
-          resizeMode="cover"
-          accessible={true}
-          accessibilityLabel={'Vietnam Local Logo'}
+          style={styles.logo}
+          source={require("../img/little-lemon-logo.png")}
         />
-        <Text
-          style={[
-            styles.headerText,
-            colorScheme === 'light'
-              ? { color: '#333333' }
-              : { color: '#EDEFEE' },
-          ]}>
-          Vietnam Local
+        <Text style={styles.title}>
+          Little Lemon, your local Vietnamese Bistro
         </Text>
       </View>
-      <Text
-        style={[
-          styles.regularText,
-          colorScheme === 'light' ? { color: '#333333' } : { color: '#EDEFEE' },
-        ]}>
-        Vietnam Local was born with the mission to help international friends travel more easily and enjoy more fun while visiting Vietnam!
-      </Text>
-      <Text style={styles.regularText}>Click to view menu</Text>
-      <Pressable
-        onPress={() => navigation.navigate('Menu')}
-        style={styles.button}>
-        <Text style={styles.buttonText}>View Menu</Text>
-      </Pressable>
-    </ScrollView>
+      <Button
+        onPress={() => {
+          navigation.navigate("Subscribe");
+        }}
+      >
+        Newsletter
+      </Button>
+    </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 24,
+    backgroundColor: 'white',
+    justifyContent: 'space-between',
   },
-  headerWrapper: {
-    flexDirection: 'row',
+  contentContainer: {
+    flex: 1,
     justifyContent: 'center',
-    margin: 10,
+    alignItems: 'center',
   },
-  headerText: {
-    paddingRight: 10,
-    paddingLeft: 20,
-    paddingTop: 30,
-    paddingBottom: 10,
-    fontSize: 30,
-    color: '#EDEFEE',
-    textAlign: 'center',
+  logo: {
+    height: 200,
+    width: 300,
+    resizeMode: "contain",
   },
-  regularText: {
-    fontSize: 24,
-    padding: 20,
-    marginVertical: 8,
-    color: 'black',
-    textAlign: 'center',
+  title: {
+    marginTop: 48,
+    paddingVertical: 10,
+    color: "#333333",
+    textAlign: "center",
+    fontSize: 20,
+    fontWeight: "bold",
   },
-  image: {
-    width: 100,
-    height: 100,
-    borderRadius: 20,
-  },
-  button: {
-    fontSize: 22,
-    padding: 10,
-    marginVertical: 8,
-    margin: 100,
-    backgroundColor: '#EE9972',
-    borderColor: '#EE9972',
-    borderWidth: 2,
-    borderRadius: 50,
-  },
-  buttonText: {
-    color: 'black',
-    textAlign: 'center',
-    fontSize: 25,
-  },  
 });
+
+export default WelcomeScreen;

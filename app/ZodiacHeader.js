@@ -5,7 +5,7 @@ export default function ZodiacHeader() {
   return (
     <View style={{ flex: 0.2, backgroundColor: '#0066ff' }}>
       <Text style={{ padding: 40, fontSize: 25, color: 'white' }}>
-        localVie 1.0
+      Local Vietnamese Bistro
       </Text>
     </View>
   );
